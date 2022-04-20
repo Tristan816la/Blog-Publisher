@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { Fragment, useEffect, useState } from "react";
 import NotionService from "../services/notion";
 import { Article } from "./@types/types.d";
-import TextWrapper from "../components/TextWrapper";
+import TextWrapper from "../components/Wrappers/TextWrapper";
 
 type Props = {
   articles: Article[];

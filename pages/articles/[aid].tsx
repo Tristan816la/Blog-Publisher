@@ -4,8 +4,9 @@ import NotionService from "../../services/notion";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { Article } from "../@types/types.d";
-import Head from "next/head";
-import TextWrapper from "../../components/TextWrapper";
+import TextWrapper from "../../components/Wrappers/TextWrapper";
+import MarkdownWrapper from "../../components/Wrappers/MarkdownWrapper";
+import MHead from "../../components/MHead";
 
 type Props = {
   article: any;
@@ -15,20 +16,12 @@ type Props = {
 const Article = ({ article, post }: Props) => {
   return (
     <>
-      <Head>
-        <title>{post.title}</title>
-        <meta name={"og:title"} title={"og:title"} content={post.title} />
-        <meta
-          name={"og:description"}
-          title={"og:description"}
-          content={post.title}
-        />
-      </Head>
-      <main className="mx-auto">
+      <MHead title={post.title}></MHead>
+      <main>
         <TextWrapper>
-          <article className="prose prose-slate prose-headings:text-center">
+          <MarkdownWrapper>
             <ReactMarkdown remarkPlugins={[gfm]}>{article}</ReactMarkdown>
-          </article>
+          </MarkdownWrapper>
         </TextWrapper>
       </main>
     </>
