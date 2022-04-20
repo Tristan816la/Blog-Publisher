@@ -11,7 +11,7 @@ const Card = ({ title, children }: Props) => {
     <Link href={`/${title}`}>
       <a>
         <div className='border px-12 py-10 rounded hover:cursor-pointer hover:ease-in hover:shadow-md'>
-          <div className='font-black'>{title}</div>
+          <div className='font-extrabold'>{title}</div>
           <div>{children}</div>
         </div>
       </a>
