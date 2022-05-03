@@ -1,17 +1,17 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
-import Link from "next/link";
-import React, { Fragment, useEffect, useState } from "react";
-import NotionService from "../services/notion";
-import { Article } from "./@types/types.d";
-import TextWrapper from "../components/Wrappers/TextWrapper";
+import { GetStaticProps } from 'next';
+import Link from 'next/link';
+import React, { Fragment } from 'react';
+import NotionService from '../services/notion';
+import { IArticle } from '../@types/types.d';
+import TextWrapper from '../components/Wrappers/TextWrapper';
 
 type Props = {
-  articles: Article[];
+  articles: IArticle[];
 };
 
-const Home = ({ articles }: Props) => {
+function Home({ articles }: Props) {
   return (
-    <Fragment>
+    <>
       Check out my articles!
       <TextWrapper>
         {articles.map((a) => (
@@ -20,14 +20,14 @@ const Home = ({ articles }: Props) => {
           </Link>
         ))}
       </TextWrapper>
-    </Fragment>
+    </>
   );
-};
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const notionService = new NotionService();
   const articles = await notionService.getPage(
-    process.env.NEXT_PUBLIC_ARTICLES_ID as string
+    process.env.NEXT_PUBLIC_ARTICLES_ID as string,
   );
   return {
     props: {
